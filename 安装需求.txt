@@ -1,0 +1,9 @@
+﻿sublime 安装Anaconda www.cnblogs.com/nx520zj/p/5787393.html
+windows 下载https://www.anaconda.com/download/ 安装Anaconda 
+pip坑太多，依赖有问题，所有舍去
+ERROR conda.core.link:_execute(502): An error occurred while installing pack问题UTF-8报错
+
+解决方法：
+C:\Users\xxx> 中的xxx不是管理员，或者说就是权限不够；
+在conda在的路径里，......\Anaconda3右击属性->安全->user选中现在的用户，修改权限至所有权限；
+重新打开命令行，即可。
