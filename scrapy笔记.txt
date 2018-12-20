@@ -9,4 +9,8 @@ C：定义我们需要爬取的网址，没有网址蜘蛛肿么爬，所以这�
 D：继承scrapy的一个方法：start_requests(self)，这个方法的作用就是通过上面定义的链接去爬取页面，简单理解就是下载页面。
 那我们怎么提取我们想要的数据呢？比如我想要一个文章的标题、内容、图片，这些的话就可以我们自己定义方法提取了，后面我们慢慢涉及！这里先简单的来！
 好了，我们先来看看第一个简单的蜘蛛项目：
+scrapy提取数据的几种方式：CSS、XPATH、RE（正则），
+scrapy shell http://lab.scrapyd.cn
+response.css('title::text').extract_first()
+
 
