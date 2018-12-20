@@ -7,3 +7,7 @@ ERROR conda.core.link:_execute(502): An error occurred while installing pack问�
 C:\Users\xxx> 中的xxx不是管理员，或者说就是权限不够；
 在conda在的路径里，......\Anaconda3右击属性->安全->user选中现在的用户，修改权限至所有权限；
 重新打开命令行，即可。
+pip install win32Api :此install 我忘记了可能不是该名字
+Anaconda conda install python=3.6 更改默认版本
+
+具体安装步骤 
