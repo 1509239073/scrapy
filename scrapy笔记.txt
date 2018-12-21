@@ -12,5 +12,95 @@ D：继承scrapy的一个方法：start_requests(self)，这个方法的作用�
 scrapy提取数据的几种方式：CSS、XPATH、RE（正则），
 scrapy shell http://lab.scrapyd.cn
 response.css('title::text').extract_first()
+xpath
+标签[@属性名='属性值']
+//ol[@class="page-navigator"]//@href 
+缩小标签范围、限定属性的方式
+response.xpath("//ul[@class='tags-list']//li//a//text()").extract()
+
+response.xpath("string(//div[@class='post-content'])").extract() 
+string(要提取内容的标签)
+
+
+/bookstore/book[1]  选取属于 bookstore 子元素的第一个 book 元素。
+/bookstore/book[last()]     选取属于 bookstore 子元素的最后一个 book 元素。
+/bookstore/book[last()-1]   选取属于 bookstore 子元素的倒数第二个 book 元素。
+/bookstore/book[position()<3]   选取最前面的两个属于 bookstore 元素的子元素的 book 元素。
+//title[@lang]  选取所有拥有名为 lang 的属性的 title 元素。
+//title[@lang='eng']    选取所有 title 元素，且这些元素拥有值为 eng 的 lang 属性。
+/bookstore/book[price>35.00]    选取 bookstore 元素的所有 book 元素，且其中的 price 元素的值须大于 35.00。
+/bookstore/book[price>35.00]/title  选取 bookstore 元素中的 book 元素的所有 title 元素，且其中的 price 元素的值须大于 35.00。
+
+
+bookstore   选取 bookstore 元素的所有子节点。
+/bookstore  
+
+选取根元素 bookstore。
+
+注释：假如路径起始于正斜杠( / )，则此路径始终代表到某元素的绝对路径！
+bookstore/book  选取属于 bookstore 的子元素的所有 book 元素。
+//book  选取所有 book 子元素，而不管它们在文档中的位置。
+bookstore//book     选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。
+//@lang     选取名为 lang 的所有属性。
+
+XPath 通配符可用来选取未知的 HTML元素。
+通配符     描述
+*   匹配任何元素节点。
+@*  匹配任何属性节点。
+node()  匹配任何类型的节点。
+
+
+/bookstore/*    选取 bookstore 元素的所有子元素。
+//*     选取文档中的所有元素。
+//title[@*]     选取所有带有属性的 title 元素。
+
+scrapy startproject（创建项目）、
+scrapy crawl XX（运行XX蜘蛛）、
+scrapy shell http://www.scrapyd.cn（调试网址为http://www.scrapyd.cn的网站），
+
+全局命令 
+startproject 
+    创建项目的，如，创建一个名为：scrapyChina的项目： 
+    scrapy strartproject scrapychina
+genspider 
+    根据蜘蛛模板创建蜘蛛的命令
+settings
+    scrapy settings --get DOWNLOAD_DELAY 下载延迟
+    scrapy settings --get BOT_NAME 名字
+    方便你查看到你对你的scray设置了些神马参数
+runspider
+    运行蜘蛛除了使用：scrapy crawl XX之外，我们还能用：runspider，前者是基于项目运行，后者是基于文件运行，也就是说你按照scrapy的蜘蛛格式编写了一个py文件，那你不想创建项目，那你就可以使用runspider，比如你编写了一个：scrapyd_cn.py的蜘蛛，你要直接运行就是：scrapy runspider scrapy_cn.py
+
+shell
+    调试
+fetch
+    异步传输！因此但你发现获取不到内容的时候，你就要有所警觉，感觉用fetch命令来吧它的html代码拿下来看看
+    scrapy fetch http://www.scrapyd.cn >d:/3.html
+view
+    查看蜘蛛看到的是否和你看到的一致，便于排错，用法：
+version
+
+genspider 
+    创建蜘蛛模板的
+    scrapy genspider [options] <name> <domain>
+    scrapy genspider -l
+    Available templates:
+        basic
+        crawl
+        csvfeed
+        xmlfeed
+
+scrapy项目命令 我们必须定位到我们项目文件夹
+crawl 运行蜘蛛
+check 检查蜘蛛
+list  显示多少个蜘蛛
+edit
+parse
+bench
+
+scrapyd
+pip install scrapyd-client
+
+
 
 
